@@ -7,26 +7,32 @@ function addTarefa () {
         return;
 }
 
-    const novaTarefa = document.createElement("li");
-    novaTarefa.textContent = tarefa;
+    const li = document.createElement("li");
+    
+    const span = document.createElement("span");
+    span.textContent = tarefa
 
-    const listaTarefa = document.getElementById("lista-tarefas");
-    listaTarefa.appendChild(novaTarefa);
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", () => {
+        li.classList.toggle("concluida");
+    } );
 
+    const botaoRemove = document.createElement("button");
+    botaoRemove.textContent = "❌";
+    botaoRemove.addEventListener("click", () => {
+    li.remove();
+})
+
+    li.appendChild(span);
+    li.appendChild(checkbox);
+    li.appendChild(botaoRemove)
+
+    document.getElementById("lista-tarefas").appendChild(li);
     input.value = "";
-
-    const item = document.createElement("input");
-    item.type = "checkbox";
-    item.addEventListener("change", () => {
-        novaTarefa.classList.toggle("concluida");
-    } )
-
-    listaTarefa.appendChild(item)
-}
+};
 
 const botaoAdd = document.getElementById("botao-add");
 botaoAdd.addEventListener("click", () => {
     addTarefa();
 })
-
-
