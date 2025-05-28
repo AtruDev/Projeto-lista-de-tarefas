@@ -8,13 +8,25 @@ function addTarefa () {
 }
 
     const novaTarefa = document.createElement("li");
-    novaTarefa.textContent = tarefa
+    novaTarefa.textContent = tarefa;
 
-    const listaTarefa = document.getElementById("lista-tarefas")
+    const listaTarefa = document.getElementById("lista-tarefas");
     listaTarefa.appendChild(novaTarefa);
+
+    input.value = "";
+
+    const item = document.createElement("input");
+    item.type = "checkbox";
+    item.addEventListener("change", () => {
+        novaTarefa.classList.toggle("concluida");
+    } )
+
+    listaTarefa.appendChild(item)
 }
 
-const botaoAdd = document.getElementById("botao-add")
+const botaoAdd = document.getElementById("botao-add");
 botaoAdd.addEventListener("click", () => {
-    addTarefa()
+    addTarefa();
 })
+
+
